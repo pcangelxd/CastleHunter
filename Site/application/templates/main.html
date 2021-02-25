@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CASTLE HUNTER</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></link>
+    <link href="static/images/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <style>
+      html *{
+        font-family: "Comic Sans MS";
+      }
+      body{
+        background-color:#332D2D;
+      }
+
+      .footer{
+        margin-top: 2rem;
+        background-color: #252020;
+        color: snow;
+        padding: .5rem .25rem;
+      }
+      .footer *{
+        margin: 0;
+      }
+
+      .sys-modal .modal-header{
+        display: flex;
+        justify-content: center;
+      }
+      .sys-modal .modal-title{
+        font-weight: bold;
+        font-size: 25px;
+        color: black;
+      }
+      .sys-modal .modal-content{
+        background-color: #E4E4E4;
+        border-radius: 1rem;
+        border: 0;
+      }
+
+      .sys-input{
+        background-color: #E4E4E4;
+        border: 0;
+        border-radius: 0;
+        border-radius: .15rem;
+        border-bottom: 1px solid black;
+      }
+      .sys-input:focus{
+        box-shadow: none;
+      }
+      .form-btn{
+        background-color: #C4C4C4;
+        border-radius: .5rem;
+        font-weight: 700;
+      }
+      .form-btn:hover{
+        background-color: #919191;
+      }
+      .form-btn:focus{
+        box-shadow: none;
+      }
+      .form-link{
+        font-size: 12px;
+        font-weight: 400;
+        color: black;
+        text-decoration: none;
+      }
+      .form-link:hover{
+        color: black;
+        text-decoration: none;
+      }
+
+      .sys-navbar{
+        margin: 0;
+        padding: 0;
+        background-color: #332D2D;
+      }
+      .sys-navbar .sys-nav{
+        z-index: 1000;
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        background-color: rgba(215, 120, 51, 0.87);
+        color: snow;
+        border-radius: .5rem;
+      }
+      .sys-navbar .sys-nav .navbar-nav{
+        justify-content: center;
+      }
+      .sys-navbar .logo{
+        z-index: 1001;
+        margin: 0;
+      }
+      .sys-navbar .logo img{
+        width: 7rem;
+      }
+      .sys-separator-vertical{
+        background-color: rgba(0,0,0, 0.3);
+        width: 3px;
+      }
+      .title{
+        text-decoration: none;
+        color: snow;
+        display: flex;
+        font-weight: 700;
+        align-items: center;
+        margin: 0;
+      }
+      .title:hover{
+        text-decoration: none;
+        color: snow;
+      }
+      .lang-select{
+        display: flex;
+        align-items: center;
+        padding-right: 1rem;
+        z-index: 1002;
+      }
+      .lang-select .lang-select-arrow{
+        font-size: 10px;
+        padding: 0;
+      }
+      .lang-select .lang-select-arrow:focus{
+        box-shadow: none;
+      }
+      .lang-select .lang-select-btn:focus{
+        box-shadow: none;
+      }
+      .lang-select .lang-select-options{
+        background-color: rgb(215, 120, 51);
+        position: fixed;
+        margin-top: 4.5rem;
+        margin-left: .1rem;
+        border-radius: .25rem;
+        display: none;
+      }
+      .lang-select .lang-select-options *{
+        display: block;
+      }
+      .lang-select .lang-select-options.show{
+        display: block;
+      }
+      .user-info{
+        width: 100%;
+        max-width: 12rem;
+      }
+      .user-info .user-info-slot{
+        text-align: center;
+        display: block;
+      }
+      .user-info .user-info-slot *{
+        color: snow;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline;
+      }
+      .user-info .user-info-slot #term{
+        color: rgb(215, 120, 51);
+      }
+
+      .sys-btn{
+        background-color: #B35702;
+        color: snow;
+        border-radius: .5rem;
+      }
+      .sys-btn:hover{
+        background-color: #803e01;
+        color: snow;
+      }
+      .sys-btn:focus{
+        box-shadow: none;
+      }
+
+      .nav-btn{
+        color: snow;
+      }
+      .nav-btn:hover{
+        color: snow;
+      }
+      .nav-btn:focus{
+        box-shadow: none;
+      }
+
+      .main_pic{
+        width: 100%;
+        padding: 0;
+      }
+      .main_pic div{
+        margin-top:-6rem;
+      }
+      .main_pic img{
+        object-fit: cover;
+        width: 100%;
+        height: 444px;
+      }
+      .block *{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: snow;
+      }
+      .block img{
+        margin: auto;
+      }
+      .featurette-divider{
+        background-color: #C4C4C4;
+      }
+      .featurette{
+        padding: 2rem;
+      }
+      .featurette *{
+        color: snow;
+      }
+
+      .sys-title{
+        background-color: #CE711B;
+        color: snow;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+        width:20rem;
+        margin:auto;
+      }
+      .sys-title::after{
+        content: " ";
+        background-color: #75410f;
+        position: absolute;
+        height: 100%;
+        left:1rem;
+        right:1rem;
+        bottom:0;
+        transform: rotate(-5deg);
+        z-index: -1;
+      }
+      .sys-table{
+        color: snow;
+        width: 100%;
+      }
+      .sys-table th{
+        border:1px solid snow;
+        text-align: center;
+      }
+      .sys-table .sys-table-header{
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header class="navbar sys-navbar navbar-expand fixed-top flex-column flex-sm-row">
+      <div class="navbar-brand logo">
+        <img src="static/images/logo.png" alt="...">
+      </div>
+      <div class="sys-nav pl-sm-4 mt-sm-4 mb-2 mb-sm-0 mr-sm-1 flex-row">
+        <nav class="navbar-nav">
+          <a class="title" href="/">CASTLE HUNTER</a>
+        </nav>
+        <nav class="navbar-nav ml-auto">
+          {{ if .ru }}
+          <button class="btn nav-btn" data-toggle="modal" data-target="#login" type="button">Вход</button>
+          {{ end }}
+          {{ if .en }}
+            <button class="btn nav-btn" data-toggle="modal" data-target="#login" type="button">Log in</button>
+          {{ end }}
+          <div class="sys-separator-vertical"></div>
+          {{ if .ru }}
+          <button class="btn nav-btn" data-toggle="modal" data-target="#reg" type="button">Регистрация</button>
+          {{ end }}
+          {{ if .en }}
+            <button class="btn nav-btn" data-toggle="modal" data-target="#reg" type="button">Sign up</button>
+          {{ end }}
+
+          <div class="lang-select">
+            {{ if .ru }}
+              <img id="lang" src="static/images/rus.png" alt="...">
+            {{ end }}
+            {{ if .en }}
+              <img id="lang" src="static/images/eng.png" alt="...">
+            {{ end }}
+            <button class="btn lang-select-arrow" type="button">▼</button>
+            <div class="lang-select-options">
+              <form method="post" action="/user/language/ru">
+                <button class="btn lang-select-btn" id="rus" type="submit"><img src="static/images/rus.png" alt="rus"></button>
+              </form>
+              <form method="post" action="/user/language/en">
+                <button class="btn lang-select-btn" id="eng" type="submit"><img src="static/images/eng.png" alt="eng"></button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <br>
+    <main class="mt-5">
+      <div id="main_pic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#main_pic" data-slide-to="0" class="active"></li>
+          <li data-target="#main_pic" data-slide-to="1"></li>
+          <li data-target="#main_pic" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item main_pic active">
+            <img src="static/images/pic.png" style="height: 35rem" alt="...">
+            <div class="container">
+              <div class="carousel-caption text-start">
+                {{ if .ru }}
+                  <button class="btn sys-btn" style="max-width:200px;width:100%" data-toggle="modal" data-target="#login" type="button">Купите подписку сейчас</button>
+                {{ end }}
+                {{ if .en }}
+                  <button class="btn sys-btn" style="max-width:200px;width:100%" data-toggle="modal" data-target="#login" type="button">Purchase a subscription now</button>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item main_pic">
+            <img src="static/images/pic1.jpg" style="height: 35rem" alt="...">
+            <div class="container">
+              <div class="carousel-caption text-start">
+                {{ if .ru }}
+                  <button class="btn sys-btn" style="max-width:200px;width:100%" data-toggle="modal" data-target="#login" type="button">Купите подписку прямо сейчас</button>
+                {{ end }}
+                {{ if .en }}
+                  <button class="btn sys-btn" style="max-width:200px;width:100%" data-toggle="modal" data-target="#login" type="button">Purchase your subscription now</button>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item main_pic">
+            <img src="static/images/pic2.jpg" style="height: 35rem" alt="...">
+            <div class="container">
+              <div class="carousel-caption text-start">
+                {{ if .ru }}
+                  <button class="btn sys-btn" style="max-width:200px;width:100%" data-toggle="modal" data-target="#login" type="button">Купите подписку прямо сейчас</button>
+                {{ end }}
+                {{ if .en }}
+                  <button class="btn sys-btn" style="max-width:200px;width:100%" data-toggle="modal" data-target="#login" type="button">Buy your subscription now</button>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#main_pic" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#main_pic" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="container-fluid pt-5">
+        <div class="row">
+          <div class="col-lg-3 d-flex justify-content-center">
+            <div class="block">
+              <img src="static/images/image3.png" alt="...">
+              {{ if .ru }}
+                <h2>Работаем 24/7</h2>
+              {{ end }}
+              {{ if .en }}
+                <h2>Working 24/7</h2>
+              {{ end }}
+            </div>
+          </div>
+          <div class="col-lg-3 d-flex justify-content-center">
+            <div class="block">
+              <img src="static/images/image4.png" alt="...">
+              {{ if .ru }}
+              <h2>Точный поиск</h2>
+              {{ end }}
+              {{ if .en }}
+                <h2>Exact search</h2>
+              {{ end }}
+            </div>
+          </div>
+          <div class="col-lg-3 d-flex justify-content-center">
+            <div class="block">
+              <img src="static/images/image1.png" alt="...">
+              {{ if .ru }}
+              <h2>Низкая стоимость</h2>
+              {{ end }}
+              {{ if .en }}
+                <h2>Low prices</h2>
+              {{ end }}
+            </div>
+          </div>
+          <div class="col-lg-3 d-flex justify-content-center">
+            <div class="block">
+              <img src="static/images/image2.png" alt="...">
+              {{ if .ru }}
+              <h2>Удобство в использовании</h2>
+              {{ end }}
+              {{ if .en }}
+                <h2>Easy to use</h2>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <br>
+        <hr class="featurette-divider">
+        <div class="container">
+          <div class="row featurette">
+            <div class="col-md-7">
+              {{ if .ru }}
+                <p class="lead">CastleHunter - бот для поиска замков в мобильной игре "Lords Mobile" У вас нет времени на поиск вашего врага на карте? С данным ботом это больше не проблема! Вы можете отправить заявку на поиск нужного вам замка, а после заниматься своими делами. Как только бот найдет замок, он отправит вам письмо с информацией о местоположении нужного вам замка.<br><br>Стоимость данной услуги:<br>7 дней - 199₽ <br> 14 дней - 299₽ <br> 30 дней - 399₽</p>
+              {{ end }}
+              {{ if .en }}
+                <p class="lead">CastleHunter - a bot for finding castles in the mobile game "Lords Mobile" Don't have time to find your target on the map? With this bot, this is no longer a problem! You can send an application to find the castle you need, and then go about your business. Once the bot finds the lock, it will send you an email with the location of the lock you want.<br><br>The cost of this service:<br>7 days - 2$ <br> 14 days - 4$<br> 30 days - 6$</p>
+              {{ end }}
+            </div>
+            <div class="col-md-5">
+              <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" style="width: 500px; height: 500px; background-size: cover;border-radius: 12%" src="static/images/unnamed.jpg" />
+            </div>
+          </div>
+        </div>
+      </div> </main>
+    <div class="modal sys-modal fade" id="reg" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            {{ if .ru }}
+              <h5 class="modal-title">Регистрация</h5>
+            {{ end }}
+            {{ if .en }}
+              <h5 class="modal-title">Sign up</h5>
+            {{ end }}
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation w-75 mx-auto" action="/user/registration/" method="post" novalidate>
+              <div class="form-group">
+                <input class="form-control sys-input" type="text" name="email" placeholder="E-mail" required>
+              </div>
+              <div class="form-group">
+                {{ if .ru }}
+                  <input class="form-control sys-input" type="password" name="password" placeholder="Пароль" required>
+                {{ end }}
+                {{ if .en }}
+                  <input class="form-control sys-input" type="password" name="password" placeholder="Password" required>
+                {{ end }}
+              </div>
+              <div class="form-group">
+                {{ if .ru }}
+                <input class="form-control sys-input" type="password" name="confirm_password" placeholder="Повтор пароля" required>
+                {{ end }}
+                {{ if .en }}
+                  <input class="form-control sys-input" type="password" name="confirm_password" placeholder="Password again" required>
+                {{ end }}
+              </div>
+              <div class="form-group d-flex justify-content-center">
+                {{ if .ru }}
+                <button class="btn form-btn" type="submit" name="button">Зарегистрироваться</button>
+                {{ end }}
+                {{ if .en }}
+                  <button class="btn form-btn" type="submit" name="button">Register</button>
+                {{ end }}
+              </div>
+              <div class="form-group d-flex justify-content-center">
+                {{ if .ru }}
+                <a class="form-link" href="#login" data-toggle="modal" data-dismiss="modal">Уже есть аккаунт?<u>Авторизуйтесь!</u></a>
+                {{ end }}
+                {{ if .en }}
+                  <a class="form-link" href="#login" data-toggle="modal" data-dismiss="modal">Already registered?<u>Log in</u></a>
+                {{ end }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal sys-modal fade" id="login" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            {{ if .ru }}
+            <h5 class="modal-title">Авторизация</h5>
+            {{ end }}
+            {{ if .en }}
+              <h5 class="modal-title">(EN) Авторизация</h5>
+            {{ end }}
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation w-75 mx-auto" action="/user/authorisation/" method="post" novalidate>
+              <div class="form-group">
+                <input class="form-control sys-input" type="text" name="email" placeholder="E-mail" required>
+              </div>
+              <div class="form-group">
+                {{ if .ru }}
+                  <a class="float-right form-link" href="#pass_recovery1" data-toggle="modal" data-dismiss="modal">Забыли пароль?</a>
+                  <input class="form-control sys-input" type="password" name="password" placeholder="Пароль" required>
+                {{ end }}
+                {{ if .en }}
+                  <a class="float-right form-link" href="#pass_recovery1" data-toggle="modal" data-dismiss="modal">Forgot password?</a>
+                  <input class="form-control sys-input" type="password" name="password" placeholder="Password" required>
+                {{ end }}
+              </div>
+              <div class="form-group d-flex justify-content-center">
+                {{ if .ru }}
+                <button class="btn form-btn" type="submit" name="button">Авторизоваться</button>
+                {{ end }}
+                {{ if .en }}
+                  <button class="btn form-btn" type="submit" name="button">Log in</button>
+                {{ end }}
+              </div>
+              <div class="form-group d-flex justify-content-center">
+                {{ if .ru }}
+                <a class="form-link" href="#reg" data-toggle="modal" data-dismiss="modal">Нет аккаунта?<u>Зарегистрируйтесь!</u></a>
+                {{ end }}
+                {{ if .en }}
+                  <a class="form-link" href="#reg" data-toggle="modal" data-dismiss="modal">Don't have account<u>Register!</u></a>
+                {{ end }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal sys-modal fade" id="pass_recovery1" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            {{ if .ru }}
+            <h5 class="modal-title">Восстановление пароля</h5>
+            {{ end }}
+            {{ if .en }}
+              <h5 class="modal-title">Password recovery</h5>
+            {{ end }}
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation w-75 mx-auto" action="/user/pass_recovery1/" method="post" novalidate>
+              <div class="form-group">
+                <input class="form-control sys-input" type="text" name="email" placeholder="E-mail" required>
+              </div>
+              <div class="form-group d-flex justify-content-center">
+                {{ if .ru }}
+                <button class="btn form-btn" type="submit" name="button">Продолжить</button>
+                {{ end }}
+                {{ if .en }}
+                  <button class="btn form-btn" type="submit" name="button">Continue</button>
+                {{ end }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal sys-modal fade" id="pass_recovery2" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            {{ if .ru }}
+            <h5 class="modal-title">Восстановление пароля</h5>
+            {{ end }}
+            {{ if .en }}
+              <h5 class="modal-title">Password recovery</h5>
+            {{ end }}
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation w-75 mx-auto" action="/user/pass_recovery2/" method="post" novalidate>
+              <input type="hidden" name="email" value={{ .email }}>
+              <div class="form-group">
+                {{ if .ru }}
+                <input class="form-control sys-input" type="password" name="password" placeholder="Новый пароль" required>
+                {{ end }}
+                {{ if .en }}
+                  <input class="form-control sys-input" type="password" name="password" placeholder="New password" required>
+                {{ end }}
+              </div>
+              <div class="form-group">
+                {{ if .ru }}
+                <input class="form-control sys-input" type="password" name="confirm_password" placeholder="Повторите пароль" required>
+                {{ end }}
+                {{ if .en }}
+                  <input class="form-control sys-input" type="password" name="confirm_password" placeholder="Password again" required>
+                {{ end }}
+              </div>
+              <div class="form-group d-flex justify-content-center">
+                {{ if .ru }}
+                <button class="btn form-btn" type="submit" name="button">Продолжить</button>
+                {{ end }}
+                {{ if .en }}
+                  <button class="btn form-btn" type="submit" name="button">Continue</button>
+                {{ end }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal sys-modal fade" id="err" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            {{ if .ru }}
+            <h5 class="modal-title">Ошибка</h5>
+            {{ end }}
+            {{ if .en }}
+              <h5 class="modal-title">Error</h5>
+            {{ end }}
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation w-75 mx-auto" action="" method="post" novalidate>
+              <div class="form-group">
+                {{ .error }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal sys-modal fade" id="notification" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            {{ if .ru }}
+            <h5 class="modal-title">Уведомление</h5>
+            {{ end }}
+            {{ if .en }}
+              <h5 class="modal-title">Notifications</h5>
+            {{ end }}
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation w-75 mx-auto" action="" method="post" novalidate>
+              <div class="form-group">
+                {{ .notification }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer" style="display: flex; justify-content: space-between">
+      {{ if .ru }}
+      <p style="padding-left: 1.5rem">E-mail службы поддержки: nazik02011976@gmail.com</p>
+      {{ end }}
+      {{ if .en }}
+      <p style="padding-left: 1.5rem">Support E-mail: nazik02011976@gmail.com</p>
+      {{ end }}
+    </footer>
+    <script>
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          var forms = document.getElementsByClassName('needs-validation');
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    <script type="text/javascript">
+      var a = false;
+      $(document).ready(function() {
+        $(".lang-select-arrow").click(function(){
+          if (a == false){
+            $(".lang-select-options").addClass("show");
+            a = true;
+          }else if (a == true) {
+            $(".lang-select-options").removeClass("show");
+            a = false;
+          }
+        });
+        $("#eng").click(function(){
+          $("#lang").attr("src","static/images/eng.png");
+          $("#lang").attr("alt","eng");
+          $(".lang-select-options").removeClass("show");
+        });
+        $("#rus").click(function(){
+          $("#lang").attr("src","static/images/rus.png");
+          $("#lang").attr("alt","ru");
+          $(".lang-select-options").removeClass("show");
+        });
+      });
+    </script>
+    {{ if .errorState}}
+    <script type="text/javascript">
+      $('#err').modal("show")
+    </script>
+    {{ else }}
+      {{ if .notificationState}}
+      <script type="text/javascript">
+        $('#notification').modal("show")
+      </script>
+        {{ end }}
+    {{ end }}
+
+  {{ if .pass_recovery }}
+    <script type="text/javascript">
+      $('#pass_recovery2').modal("show")
+    </script>
+  {{ end }}
+
+  </body>
+</html>

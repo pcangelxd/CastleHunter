@@ -1,0 +1,242 @@
+html *{
+  font-family: "Comic Sans MS";
+}
+body{
+  background-color:#332D2D;
+}
+
+.footer{
+  margin-top: 2rem;
+  background-color: #252020;
+  color: snow;
+  padding: .5rem .25rem;
+}
+.footer *{
+  margin: 0;
+}
+
+.sys-modal .modal-header{
+  display: flex;
+  justify-content: center;
+}
+.sys-modal .modal-title{
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+.sys-modal .modal-content{
+  background-color: #E4E4E4;
+  border-radius: 1rem;
+  border: 0;
+}
+
+.sys-input{
+  background-color: #E4E4E4;
+  border: 0;
+  border-radius: 0;
+  border-radius: .15rem;
+  border-bottom: 1px solid black;
+}
+.sys-input:focus{
+  box-shadow: none;
+}
+.form-btn{
+  background-color: #C4C4C4;
+  border-radius: .5rem;
+  font-weight: 700;
+}
+.form-btn:hover{
+  background-color: #919191;
+}
+.form-btn:focus{
+  box-shadow: none;
+}
+.form-link{
+  font-size: 12px;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+}
+.form-link:hover{
+  color: black;
+  text-decoration: none;
+}
+
+.sys-navbar{
+  margin: 0;
+  padding: 0;
+  background-color: #332D2D;
+}
+.sys-navbar .sys-nav{
+  z-index: 1000;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  background-color: rgba(215, 120, 51, 0.87);
+  color: snow;
+  border-radius: .5rem;
+}
+.sys-navbar .sys-nav .navbar-nav{
+  justify-content: center;
+}
+.sys-navbar .logo{
+  z-index: 1001;
+  margin: 0;
+}
+.sys-navbar .logo img{
+  width: 7rem;
+}
+.sys-separator-vertical{
+  background-color: rgba(0,0,0, 0.3);
+  width: 3px;
+}
+.title{
+  text-decoration: none;
+  color: snow;
+  display: flex;
+  font-weight: 700;
+  align-items: center;
+  margin: 0;
+}
+.title:hover{
+  text-decoration: none;
+  color: snow;
+}
+.lang-select{
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  z-index: 1002;
+}
+.lang-select .lang-select-arrow{
+  font-size: 10px;
+  padding: 0;
+}
+.lang-select .lang-select-arrow:focus{
+  box-shadow: none;
+}
+.lang-select .lang-select-btn:focus{
+  box-shadow: none;
+}
+.lang-select .lang-select-options{
+  background-color: rgb(215, 120, 51);
+  position: fixed;
+  margin-top: 4.5rem;
+  margin-left: .1rem;
+  border-radius: .25rem;
+  display: none;
+}
+.lang-select .lang-select-options *{
+  display: block;
+}
+.lang-select .lang-select-options.show{
+  display: block;
+}
+.user-info{
+  width: 100%;
+  max-width: 12rem;
+}
+.user-info .user-info-slot{
+  text-align: center;
+  display: block;
+}
+.user-info .user-info-slot *{
+  color: snow;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline;
+}
+.user-info .user-info-slot #term{
+  color: rgb(215, 120, 51);
+}
+
+.sys-btn{
+  background-color: #B35702;
+  color: snow;
+  border-radius: .5rem;
+}
+.sys-btn:hover{
+  background-color: #803e01;
+  color: snow;
+}
+.sys-btn:focus{
+  box-shadow: none;
+}
+
+.nav-btn{
+  color: snow;
+}
+.nav-btn:hover{
+  color: snow;
+}
+.nav-btn:focus{
+  box-shadow: none;
+}
+
+.main_pic{
+  width: 100%;
+  padding: 0;
+}
+.main_pic div{
+  margin-top:-6rem;
+}
+.main_pic img{
+  object-fit: cover;
+  width: 100%;
+  height: 444px;
+}
+.block *{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: snow;
+}
+.block img{
+  margin: auto;
+}
+.featurette-divider{
+  background-color: #C4C4C4;
+}
+.featurette{
+  padding: 2rem;
+}
+.featurette *{
+  color: snow;
+}
+
+.sys-title{
+    background-color: #CE711B;
+    color: snow;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    width:20rem;
+    margin:auto;
+}
+.sys-title::after{
+    content: " ";
+    background-color: #75410f;
+    position: absolute;
+    height: 100%;
+    left:1rem;
+    right:1rem;
+    bottom:0;
+    transform: rotate(-5deg);
+    z-index: -1;
+}
+.sys-table{
+  color: snow;
+  width: 100%;
+}
+.sys-table th{
+  border:1px solid snow;
+  text-align: center;
+}
+.sys-table .sys-table-header{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
